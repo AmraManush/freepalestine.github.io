@@ -5,10 +5,10 @@ const config = {
     adapter: adapter({
       pages: 'build',
       assets: 'build',
-      fallback: '200.html' // or null if you don't need SPA routing
+      fallback: '200.html' // or null if not SPA
     }),
     paths: {
-      base: '/my-boycott'  // <-- This is the fix!
+      base: '/my-boycott'  // ✅ important!
     }
   }
 };
