@@ -8,7 +8,7 @@ const config = {
       fallback: '200.html' // Optional
     }),
     paths: {
-      base: '/my-boycott' // Ensure this matches your repository name
+      base: '/my-boycott/docs' // Ensure this matches your repository name
     }
   }
 };
