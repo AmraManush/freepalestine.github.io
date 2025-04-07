@@ -15,18 +15,30 @@
     suggestions = boycottList.filter(item => 
       item.attributes.name.toLowerCase().includes(searchTerm.toLowerCase())
     ).slice(0, 5);
+    
+    // Dispatch clear event when search is empty
+    if (searchTerm.length === 0) {
+      dispatch('clear');
+    }
   }
 
   function selectSuggestion(item) {
     searchTerm = item.attributes.name;
     showSuggestions = false;
-    dispatch('selected', item);  // Send the full item object
+    dispatch('selected', item);
   }
 
   function handleKeydown(e, item) {
     if (e.key === 'Enter') {
       selectSuggestion(item);
     }
+  }
+
+  // Add a clear function
+  function clearSearch() {
+    searchTerm = "";
+    showSuggestions = false;
+    dispatch('clear');
   }
 </script>
 
@@ -40,6 +52,11 @@
       placeholder="Search for products..."
       aria-label="Product search"
     />
+    {#if searchTerm}
+      <button class="clear-button" on:click={clearSearch}>
+        <i class="material-icons">close</i>
+      </button>
+    {/if}
     <div class="input-underline" />
   </div>
 
@@ -60,3 +77,26 @@
     </div>
   {/if}
 </div>
+
+<style>
+  /* Add to your existing styles */
+  .clear-button {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--outline);
+    cursor: pointer;
+    z-index: 2;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .clear-button:hover {
+    color: var(--on-surface);
+  }
+</style>

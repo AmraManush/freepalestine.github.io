@@ -17,6 +17,11 @@
     searchQuery = event.detail.attributes.name;
   }
 
+  function handleClear() {
+    selectedProduct = null;
+    searchQuery = '';
+  }
+
   function showAbout() {
     alert("This app helps you check products for ethical sourcing");
   }
@@ -33,7 +38,7 @@
   </header>
 
   <main class="main-content">
-    <Search {boycottList} on:selected={handleSelection} />
+    <Search {boycottList} on:selected={handleSelection} on:clear={handleClear} />
     
     {#if isLoading}
       <Loading />
@@ -66,17 +71,24 @@
     margin-top: 1rem;
     text-align: center;
     color: var(--on-surface);
+    animation: fadeIn 0.3s ease-out;
   }
 
   .empty-state {
     text-align: center;
     margin-top: 2rem;
     color: var(--outline);
+    animation: fadeIn 0.5s ease-out;
   }
 
   .empty-state .material-icons {
     font-size: 3rem;
     color: var(--primary-light);
     margin-bottom: 1rem;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
