@@ -5,14 +5,10 @@ const config = {
     adapter: adapter({
       pages: 'build',
       assets: 'build',
-      fallback: '200.html',  // ✅ Good if you're building an SPA (Single Page App)
-      precompress: false     // ✅ Fine to leave false
+      fallback: '200.html' // or null if you don't need SPA routing
     }),
     paths: {
-      base: '',              // ✅ Correct for a username.github.io domain
-    },
-    prerender: {
-      handleMissingId: 'warn' // ✅ Optional but helpful during dev
+      base: '/my-boycott'  // <-- This is the fix!
     }
   }
 };
