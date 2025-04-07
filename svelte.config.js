@@ -1,19 +1,18 @@
 import adapter from '@sveltejs/adapter-static';
 
-/** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
     adapter: adapter({
       pages: 'build',
       assets: 'build',
-      fallback: '200.html', // Changed from null for SPA support
-      precompress: false, // Disable if having issues
+      fallback: '200.html',  // ✅ Good if you're building an SPA (Single Page App)
+      precompress: false     // ✅ Fine to leave false
     }),
     paths: {
-      base: process.env.NODE_ENV === 'production' ? '/my-boycott' : '',
+      base: '',              // ✅ Correct for a username.github.io domain
     },
     prerender: {
-      handleMissingId: 'warn', // Helps catch missing prerender issues
+      handleMissingId: 'warn' // ✅ Optional but helpful during dev
     }
   }
 };
