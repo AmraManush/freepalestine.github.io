@@ -12,44 +12,51 @@
 
   const boycottList = granddata;
 
-  function handleSearch(term) {
-    searchQuery = term;
-    isLoading = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-      selectedProduct = boycottList.find(item => 
-        item.attributes.name.toLowerCase().includes(term.toLowerCase())
-      );
-      isLoading = false;
-    }, 500);
+  function handleSelection(event) {
+    selectedProduct = event.detail;
+    searchQuery = event.detail.attributes.name;
+  }
+
+  function showAbout() {
+    alert("This app helps you check products for ethical sourcing");
   }
 </script>
 
-<header class="app-header">
-  <h1 class="app-title">
-    <span class="TitreGreen">No blood</span> 
-    <span class="TitreRed">in</span> 
-    <span class="TitreBlack">my cart</span>
-  </h1>
-  <p class="app-subtitle">Check products for ethical sourcing</p>
-</header>
+<div class="container">
+  <header class="app-header">
+    <h1 class="app-title">
+      <span class="TitreGreen">No blood</span> 
+      <span class="TitreRed">in</span> 
+      <span class="TitreBlack">my cart</span>
+    </h1>
+    <p class="app-subtitle">Check products for ethical sourcing</p>
+  </header>
 
-<main class="main-content">
-  <Search {boycottList} on:search={handleSearch} />
-  
-  {#if isLoading}
-    <Loading />
-  {:else if selectedProduct}
-    <ResultCard product={selectedProduct} />
-  {:else if searchQuery && !isLoading && !selectedProduct}
-    <div class="alert">
-      No results found for "{searchQuery}"
-    </div>
-  {/if}
-</main>
+  <main class="main-content">
+    <Search {boycottList} on:selected={handleSelection} />
+    
+    {#if isLoading}
+      <Loading />
+    {:else if selectedProduct}
+      <ResultCard product={selectedProduct} />
+    {:else if searchQuery && !isLoading && !selectedProduct}
+      <div class="alert">
+        No boycott information found for "{searchQuery}"
+      </div>
+    {:else}
+      <div class="empty-state">
+        <i class="material-icons">search</i>
+        <p>Search for a product to check its ethical status</p>
+      </div>
+    {/if}
+  </main>
 
-<Fab icon="info" on:click={() => alert('About this app')} />
+  <footer class="app-footer">
+    <p>Ethical consumption matters. Check before you buy.</p>
+  </footer>
+
+  <Fab icon="info" on:click={showAbout} />
+</div>
 
 <style>
   .alert {
@@ -57,5 +64,19 @@
     background-color: var(--surface-variant);
     border-radius: var(--border-radius-sm);
     margin-top: 1rem;
+    text-align: center;
+    color: var(--on-surface);
+  }
+
+  .empty-state {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--outline);
+  }
+
+  .empty-state .material-icons {
+    font-size: 3rem;
+    color: var(--primary-light);
+    margin-bottom: 1rem;
   }
 </style>

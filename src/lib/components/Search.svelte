@@ -1,6 +1,9 @@
 <script>
   import { fade } from 'svelte/transition';
-  
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
   export let boycottList = [];
   
   let searchTerm = "";
@@ -17,7 +20,13 @@
   function selectSuggestion(item) {
     searchTerm = item.attributes.name;
     showSuggestions = false;
-    dispatch('search', item.attributes.name);
+    dispatch('selected', item);  // Send the full item object
+  }
+
+  function handleKeydown(e, item) {
+    if (e.key === 'Enter') {
+      selectSuggestion(item);
+    }
   }
 </script>
 
@@ -36,11 +45,11 @@
 
   {#if showSuggestions && suggestions.length > 0}
     <div class="suggestions-container" transition:fade>
-      {#each suggestions as item}
+      {#each suggestions as item (item.id)}
         <div
           class="suggestion-item"
           on:click={() => selectSuggestion(item)}
-          on:keydown={(e) => e.key === 'Enter' && selectSuggestion(item)}
+          on:keydown={(e) => handleKeydown(e, item)}
           role="button"
           tabindex="0"
         >
@@ -51,7 +60,3 @@
     </div>
   {/if}
 </div>
-
-<style>
-  /* Component-specific styles are scoped automatically */
-</style>
