@@ -35,7 +35,7 @@
           rel="noopener"
           class="proof-link"
         >
-          <i class="material-icons">link</i>
+          <i class="material-icons"></i>
           View Proof
         </a>
       {/if}

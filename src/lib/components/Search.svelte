@@ -44,7 +44,7 @@
 
 <div class="input-field">
   <div class="input-container">
-    <i class="material-icons input-icon">search</i>
+    <i class="material-icons input-icon"></i>
     <input
       bind:value={searchTerm}
       on:input={handleInput}

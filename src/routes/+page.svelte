@@ -60,7 +60,7 @@
     <p>Ethical consumption matters. Check before you buy.</p>
   </footer>
 
-  <Fab icon="info" on:click={showAbout} />
+  <!-- <Fab icon="info" on:click={showAbout} /> -->
 </div>
 
 <style>
