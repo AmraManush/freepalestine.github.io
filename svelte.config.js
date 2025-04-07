@@ -3,12 +3,12 @@ import adapter from '@sveltejs/adapter-static';
 const config = {
   kit: {
     adapter: adapter({
-      pages: 'docs',        // <-- Build output goes to /docs
+      pages: 'docs',
       assets: 'docs',
-      fallback: '200.html'  // Optional: for SPA support
+      fallback: '200.html' // Optional
     }),
     paths: {
-      base: '/my-boycott'   // or '' if deploying to amramanush.github.io
+      base: '/my-boycott' // Ensure this matches your repository name
     }
   }
 };
