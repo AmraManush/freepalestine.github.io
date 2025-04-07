@@ -34,7 +34,7 @@
       <span class="TitreRed">in</span> 
       <span class="TitreBlack">my cart</span>
     </h1>
-    <p class="app-subtitle">Check products for ethical sourcing</p>
+    <p class="app-subtitle">Ethical consumption matters. Check before you buy.</p>
   </header>
 
   <main class="main-content">
@@ -50,14 +50,14 @@
       </div>
     {:else}
       <div class="empty-state">
-        <i class="material-icons">search</i>
-        <p>Search for a product to check its ethical status</p>
+        <i class="material-icons">Free Palestine</i>
+        <p>We're also working on adding alternative options—updates coming soon</p>
       </div>
     {/if}
   </main>
 
   <footer class="app-footer">
-    <p>Ethical consumption matters. Check before you buy.</p>
+    <p>A project by Team Rafah, based in Bagerhat.</p>
   </footer>
 
   <!-- <Fab icon="info" on:click={showAbout} /> -->
@@ -83,7 +83,7 @@
 
   .empty-state .material-icons {
     font-size: 3rem;
-    color: var(--primary-light);
+    color: green;
     margin-bottom: 1rem;
   }
 

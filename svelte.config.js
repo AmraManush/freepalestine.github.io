@@ -5,10 +5,10 @@ const config = {
     adapter: adapter({
       pages: 'docs',
       assets: 'docs',
-      fallback: '200.html' // Optional
+      fallback: '200.html'
     }),
     paths: {
-      base: '/my-boycott' // Ensure this matches your repository name
+      base: '/my-boycott'
     }
   }
 };
