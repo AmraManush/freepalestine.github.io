@@ -3,12 +3,12 @@ import adapter from '@sveltejs/adapter-static';
 const config = {
   kit: {
     adapter: adapter({
-      pages: 'build',
-      assets: 'build',
-      fallback: '200.html' // or null if not SPA
+      pages: 'docs',
+      assets: 'docs',
+      fallback: '200.html'
     }),
     paths: {
-      base: '/my-boycott'  // ✅ important!
+      base: '/my-boycott' // or '' if deploying to root
     }
   }
 };
