@@ -9,7 +9,7 @@ const config = {
       fallback: null,   // Enable SPA mode (optional)
     }),
     paths: {
-      base: process.argv.includes('dev') ? '' : '/my-boycott', // Replace with your repo name
+       base: process.env.NODE_ENV === 'production' ? '/freepalestine' : '',
     },
   },
 };
